@@ -11,23 +11,44 @@ function _init()
 	p.gold=0
 	p.lvl=1
 	p.hp=1000
+	consolesize=40
 	monsters={}
 	bglove={}
 	bglove.autodmg=1
 	bglove.cost=100
 	bglove.amount=0
+	bglove.spr=81
+	bglove.x=0
+	bglove.y=64
+	bglove.w=2
+	bglove.h=2
 	btree={}
 	btree.autodmg=1
 	btree.cost=100
 	btree.amount=0
+	btree.spr=81
+	btree.x=0
+	btree.y=64
+	btree.w=2
+	btree.h=2
 	btrainer={}
 	btrainer.autodmg=1
 	btrainer.cost=100
 	btrainer.amount=0
+	btrainer.spr=81
+	btrainer.x=0
+	btrainer.y=64
+	btrainer.w=2
+	btrainer.h=2
 	binn={}
 	binn.autodmg=1
 	binn.cost=100
 	binn.amount=0
+	binn.spr=81
+	binn.x=0
+	binn.y=64
+	binn.w=2
+	binn.h=2
 	buildings={bglove, btree, btrainer, binn}
  oldb=0
 	
@@ -69,6 +90,11 @@ function drawmonsters()
 	end
 end
 
+function drawhud()
+	rect(0,128,buildings[1].w*8+1,buildings[1].h*8*4+1,0) --buildings
+	rect(buildings[1].w*8+8+1, 128, 128,128-consolesize,0) --console
+end
+
 -- x= -1 * (((lefthp*(m.x+m.w*8-1))/fullhp) - m.x - 8*m.w) final formula for damage offset on lifebars?
 
 function autoattack()
@@ -88,6 +114,7 @@ end
 
 function _draw()	
 	drawmonsters()
+	drawhud()
  print("slimes "..p.gold, 40, 40, 0)
 	--circ(x, y, 2, 14) --draw at mouse coord
 	
